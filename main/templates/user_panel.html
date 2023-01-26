@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block content %}
+<div class="container border border-3 rounded my-4 p-3">
+    <div class="col-md-6 mx-auto">
+        <ul>
+            <li class="d-flex justify-content-between">
+                <h3>My account</h3>
+                <span><a href="{% url 'delete_account' user %}" class="btn btn-danger"
+                        aria-label="Delete your account">Delete account</a></span>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <u>My orders</u>
+                </div>
+                <table class="table table-sm">
+                    <tr>
+                        <th>Order no.</th>
+                        <th>Storage unit</th>
+                        <th>Start date</th>
+                        <th>Price</th>
+                        <th>Remove</th>
+                    </tr>
+                    {% for order in orders %}
+                    <tr>
+                        <td>#{{order.pk}}</td>
+                        <td>{{order.storage_unit}}</td>
+                        <td>{{order.start_date}}</td>
+                        <td>{{order.storage_unit.price}} kr</td>
+                        <td><a href="{% url 'delete_order' order.pk %}" aria-label="Delete this order"><i
+                                    class="fa-solid fa-trash-can text-red"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% if not orders %}
+                    <p class="text-center">You don't have any orders.</p>
+                {% endif %}
+                <div class="text-center my-2">
+                    <a href="{% url 'order_form' %}" class="btn btn-primary" aria-label="Make a new order">New order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-4" id="user-info">
+            <div class="card mb-5">
+                <div class="card-header d-flex justify-content-between">
+                    <span><u>My information</u></span>
+                    <a href="{% url 'edit_user_info' %}" aria-label="Edit your contact information"><b>Edit <i
+                                class="fa-solid fa-pencil"></i></b></a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light"><b>Name</b></li>
+                    <li class="list-group-item">{{ request.user.customer.fullname }}</li>
+                    <li class="list-group-item bg-light"><b>Address</b></li>
+                    <li class="list-group-item">{{ request.user.customer.address }}</li>
+                    <li class="list-group-item bg-light"><b>Zipcode</b></li>
+                    <li class="list-group-item">{{ request.user.customer.zipcode }}</li>
+                    <li class="list-group-item bg-light"><b>City</b></li>
+                    <li class="list-group-item">{{ request.user.customer.city }}</li>
+                    <li class="list-group-item bg-light"><b>Email</b></li>
+                    <li class="list-group-item">{{ request.user.customer.email }}</li>
+                    <li class="list-group-item bg-light"><b>Phone</b></li>
+                    <li class="list-group-item">{{ request.user.customer.phone }}</li>
+                    <li class="list-group-item bg-light"><b>Person/orgnr</b></li>
+                    <li class="list-group-item">{{ request.user.customer.person_or_org_nr }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

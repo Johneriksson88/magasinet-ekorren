@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 container-fluid text-center pt-2" id="header-banner">
+            <p class="mx-auto my-auto">
+                <p class="lead">Limited offer: first month for <span class="low-price">free!</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<section class="container-fluid" id="hero-section">
+    <div class="row">
+        <!-- <div class="col-md-4 hero-left">
+            <img class="img-fluid" src="/static/images/ekorren_logo.jpg" alt="A squirrel with moving boxes">
+
+        </div> -->
+        <div class="col-s-12 hero-image d-flex flex-wrap justify-content-center align-items-center">
+            <div class="v-stack gap-3 text-center rounded-2 p-4 border-dark" id="hero-text">
+                <h2 class="bg-light shadow rounded p-1 my-5">All new and fresh storage units only 10 minutes from Uppsala!</h2>
+                <p class="lead">
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-primary btn-lg btn-warning" href="{% url 'order_form' %}" role="button" aria-label="Rent a storage unit">Rent now!</a>
+                    {% else %}
+                        <a class="btn btn-primary btn-lg" href="{% url 'not_registered' %}" role="button" aria-label="Rend a storage unit">Rent now!</a>
+                    {% endif %}
+                </p>
+
+                <p class="lead bg-light rounded shadow mx-auto px-2 mb-5" id="hero-lead">Prices from <span
+                        class="bg-warning">699</span>
+                    kr/month.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid bg-info py-10" id="instructions-section">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <h2>Get started!</h2>
+            <p class="lead">Follow these simple steps:</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-sm-12 offset-md-2 d-flex justify-content-center">
+            <ol class="list-group list-group-horizontal lead">
+                <li class="bg-light instructions"><a href="{% url 'register' %}" target="_blank" aria-label="Go to sign up page">Create an account here</a></li>
+                <li class="bg-light instructions">Enter your information</li>
+                <li class="bg-light instructions">Make an order in your user panel</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<h2 class="text-center mt-4">Our units</h2>
+
+<section class="container-fluid m-3 d-flex justify-content-center" id="product-cards-section">
+    <div class="row" id="prouct-card-row">
+        <div class="card product-card col-md-2 mx-2 p-0 my-2">
+            <h5 class="card-header card-title text-center">SMALL</h5>
+            <img class="card-img-top"
+                src="/static/images/unit_small.jpg"
+                alt="Small storage unit"
+                loading="lazy">
+            <ul class="list-group list-group-flush mt-3">
+                <li class="list-group-item">5 m&#178;</li>
+                <li class="list-group-item">First floor: 749 kr/month</li>
+                <li class="list-group-item">Second floor: <span class="bg-warning p-1 rounded">699 kr/month</span></li>
+                <li class="list-group-item">Fits 190 moving boxes</li>
+            </ul>
+            <div class="card-body text-center">
+                {% if user.is_authenticated %}
+                    <a class="btn btn-primary btn-lg" href="{% url 'order_form' %}" role="button" aria-label="Rent a storage unit">Rent now</a>
+                {% else %}
+                    <a class="btn btn-primary btn-lg" href="{% url 'not_registered' %}" role="button" aria-label="Rent a storage unit">Rent now</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card product-card col-md-2 mx-2 p-0 my-2">
+            <h5 class="card-header card-title text-center">MEDIUM</h5>
+            <img class="card-img-top"
+                src="/static/images/unit_medium.jpg"
+                alt="Medium storage unit"
+                loading="lazy">
+            <ul class="list-group list-group-flush mt-3">
+                <li class="list-group-item">6 m&#178;</li>
+                <li class="list-group-item">First floor: 899 kr/month</li>
+                <li class="list-group-item">Second floor: <span class="bg-warning p-1 rounded">749 kr/month</span></li>
+                <li class="list-group-item">Fits 240 moving boxes</li>
+            </ul>
+            <div class="card-body text-center">
+                {% if user.is_authenticated %}
+                    <a class="btn btn-primary btn-lg" href="{% url 'order_form' %}" role="button" aria-label="Rent a storage unit">Rent now</a>
+                {% else %}
+                    <a class="btn btn-primary btn-lg" href="{% url 'not_registered' %}" role="button" aria-label="Rent a storage unit">Rent now</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card product-card col-md-2 mx-2 p-0 my-2">
+            <h5 class="card-header card-title text-center">LARGE</h5>
+            <img class="card-img-top"
+                src="/static/images/unit_large.jpg"
+                alt="Large storage unit"
+                loading="lazy">
+            <ul class="list-group list-group-flush mt-3">
+                <li class="list-group-item">10 m&#178;</li>
+                <li class="list-group-item">First floor: 1 498 kr/month</li>
+                <li class="list-group-item">Second floor: <span class="bg-warning p-1 rounded ">1 398 kr/month</span></li>
+                <li class="list-group-item">Fits 380 moving boxes</li>
+            </ul>
+            <div class="card-body text-center">
+                {% if user.is_authenticated %}
+                    <a class="btn btn-primary btn-lg" href="{% url 'order_form' %}" role="button" aria-label="Rent a storage unit">Rent now</a>
+                {% else %}
+                    <a class="btn btn-primary btn-lg" href="{% url 'not_registered' %}" role="button" aria-label="Rent a storage unit">Rent now</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card product-card col-md-2 mx-2 p-0 my-2">
+            <h5 class="card-header card-title text-center">X-LARGE</h5>
+            <img class="card-img-top"
+                src="/static/images/unit_xlarge.jpg"
+                alt="Extra Large storage unit"
+                loading="lazy">
+            <ul class="list-group list-group-flush mt-3">
+                <li class="list-group-item">5 m&#178;</li>
+                <li class="list-group-item">First floor: Not yet available</li>
+                <li class="list-group-item">Second floor: <span class="bg-warning p-1 rounded">1 498 kr/month</span></li>
+                <li class="list-group-item">Fits 480 moving boxes</li>
+            </ul>
+            <div class="card-body text-center">
+                {% if user.is_authenticated %}
+                    <a class="btn btn-primary btn-lg" href="{% url 'order_form' %}" role="button" aria-label="Rent a storage unit">Rent now</a>
+                {% else %}
+                    <a class="btn btn-primary btn-lg" href="{% url 'not_registered' %}" role="button" aria-label="Rent a storage unit">Rent now</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="container-fluid bg-info py-10" id="why-us-section">
+    <h2 class="text-center mb-5 mt-5">Why rent from us?</h2>
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-3 col-md-6">
+            <div class="circle-container text-center">
+                <div class="circle-image">
+                    <img src="/static/images/icons/security-camera.png" alt="A security camera" loading="lazy">
+                </div>
+            </div>
+            <div class="circle-text">
+                <h3 class="text-center"><strong>Secure</strong></h3>
+                <p class="text-center">Security cameras and personal code</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="circle-container text-center">
+                <div class="circle-image">
+                    <img src="/static/images/icons/calendar.png" alt="A camera" loading="lazy">
+                </div>
+            </div>
+            <div class="circle-text">
+                <h3 class="text-center"><strong>Available</strong></h3>
+                <p class="text-center">Open 6 AM - 00 AM 7 days a week</p>
+            </div>
+        </div>
+    
+        <div class="col-lg-3 col-md-6">
+            <div class="circle-container text-center">
+                <div class="circle-image">
+                    <img src="/static/images/icons/unlock.png" alt="An open chain lock" loading="lazy">
+                </div>
+            </div>
+            <div class="circle-text">
+                <h3 class="text-center"><strong>No binding time</strong></h3>
+                <p class="text-center">After 3 months you move out when you want</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="circle-container text-center">
+                <div class="circle-image">
+                    <img src="/static/images/icons/container.png" alt="A moving truck unloading boxes" loading="lazy">
+                </div>
+            </div>
+            <div class="circle-text">
+                <h3 class="text-center"><strong>Easy loading</strong></h3>
+                <p class="text-center">Reversing with a trailer? Forget it! :)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid text-center m-6 pb-5 py-10" id="about-us-section">
+    <div class="col-md-6 p-4 my-3 offset-md-3 border shadow rounded" id="find-us">
+        <h3><i class="fa-regular fa-map"></i> Find us</h3>
+        <p><b>Address:</b> Näs-Edeby 1, 755 91, Uppsala</p>
+        <iframe class="embedded-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1003.2338192110516!2d17.51058145837107!3d59.80815064433253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465fca935deccc6f%3A0xff820e9149c41d66!2sN%C3%84S-EDEBY%201%2C%20755%2091%20Uppsala!5e0!3m2!1sen!2sse!4v1669815744762!5m2!1sen!2sse"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Google map directions for Magasinet Ekorren"></iframe>
+    </div>
+    <div class="row">
+        <div class="col-md-6 p-4 mt-4 offset-md-3 border shadow rounded" id="about-us">
+            <h3><i class="fa-solid fa-circle-info"></i> About us</h3>
+            <p>Magasinet Ekorren opened in the autumn of 2020. Located only 10 minutes by car from the Uppsala city centre it provides highly available
+                storage solutions without the higher renting costs of more centrally located facilities.</p>
+            <p>We at Magasinet Ekorren believe that things should be as easy as possible. Our customers can rent a storage unit, sign a contract and move in on the same day.
+                We understand that different life events call for different solutions, and we will go all the way in trying to accommodate any changes or modifications to make 
+                your experience with us as flawless as possible. We have multiple different solutions that we can sow into a personal package for you.
+            </p>
+            <p>Our storage units are available all days of the week, and using them is completely contact-less if you so wish. You get a personal code, you can drive up to the gate,
+                unload, and drive on without having the hassle of having to reverse thanks to how we laid out our roads. Different carts are provided so you don't have to 
+                break your back.
+            </p>
+            <p>We also provide archiving solutions for e.g. accounting firms, with archives up to date with all legal requirements.</p>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-6 p-4 mt-4 offset-md-3 border shadow rounded" id="contact-us">
+            <h3><i class="fa-regular fa-envelope"></i> Contact Us</h3>
+            <p><b>Telephone:</b> <a href="tel:0706499977" aria-label="Call us">+46 706 499 977</a></p>
+            <p><b>Email:</b> <a href="mailto:edebyhus@gmail.com" aria-label="Send us an email">edebyhus@gmail.com</a></p>
+            <p>Are you a business in need of storage? Make the order through contacting us by email or phone.</p>
+            <form method="POST" action="." aria-label="Contact form">
+                <h4>Send us a message:</h4>
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    {{ form.message }}
+                </div>
+                <button class="btn btn-primary m-2">Send</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

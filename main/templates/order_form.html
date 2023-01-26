@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+{% load bootstrap %}
+{% load static %}
+<h2 class="text-center mb-2 mt-2">Rent a storage unit</h2>
+<div class="row">
+    <div class="col-md-4 mx-auto mt-2 bg-grey border form-card">
+        <div class="form-container m-4 d-flex justify-content-center">
+            <form method="POST" action="#">
+                {% csrf_token %}
+                <div class="card">
+                    <div class="card-header">
+                        Storage Units
+                    </div>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Type</th>
+                            <th>Size</th>
+                            <th>Price (SEK/month)</th>
+                        </tr>
+                        {% for unit in units %}
+                            <tr>
+                                {% for field in unit %}
+                                <td>{{ field }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {{ form | bootstrap }}
+                <div class="d-flex justify-content-center gap-2">
+                    <a href="{% url 'user_panel' %}" class="btn btn-danger" aria-label="Go to user panel">Back</a>
+                    <button type="button" id="order-modal-btn" class="btn btn-primary" data-toggle="modal"
+                        data-target="#orderConfirmationModal">
+                        Next
+                    </button>
+                </div>
+                <div class="modal fade" id="order-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirm your order</h5>
+                                <button type="button" class="close-modal" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="order-modal-body">
+                                <h6>Your order:</h6>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary close-modal"
+                                    data-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" value="Confirm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

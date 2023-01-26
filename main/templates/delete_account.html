@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block content %}
+
+<div class="container border border-3 rounded my-4 p-3">
+    <div class="col-md-6 mx-auto">
+        <ul>
+            <li class="d-flex justify-content-between">
+                <h3>My account</h3>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Are you sure you want to delete your account for <u>{{ request.user }}</u>?</h5>
+                </div>
+                <p class="p-1">Deleting your account will cancel all your orders.</p>
+            </div>
+            <div class="d-flex justfy-content-center align-items-center">
+                <a class="btn btn-primary my-2" href="{% url 'user_panel' %}" aria-label="Go back">Cancel</a>
+                <form method="POST" action="{% url 'delete_account' user %}" aria-label="Delete account">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger my-2 mx-2" value="Delete">
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

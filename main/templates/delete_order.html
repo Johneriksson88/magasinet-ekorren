@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block content %}
+
+<div class="container border border-3 rounded my-4 p-3">
+    <div class="col-md-6 mx-auto">
+        <ul>
+            <li class="d-flex justify-content-between">
+                <h3>My account</h3>
+                <span><a href="#" class="text-danger pull-right" aria-label="Remove account"><u>Remove account</u></a></span>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Are you sure you want to delete this order?</h4>
+                </div>
+                <p class="p-1">The rental of the storage unit will cease at the last day of this month and has to be
+                    emptied by then.</p>
+                <table class="table table-sm">
+                    <tr>
+                        <th>Order no.</th>
+                        <th>Storage unit</th>
+                    </tr>
+                    <tr>
+                        <td>{{order.pk}}</td>
+                        <td>{{order.storage_unit}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="d-flex justfy-content-center align-items-center">
+                <a class="btn btn-primary my-2" href="{% url 'user_panel' %}">Cancel</a>
+                <form method="POST" action="{% url 'delete_order' order.pk %}">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger my-2 mx-2" value="Delete" aria-label="Delete order">
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
