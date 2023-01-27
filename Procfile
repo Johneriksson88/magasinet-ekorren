@@ -1,1 +1,1 @@
-web: gunicorn magasinet-ekorren.wsgi:application
+web: gunicorn magasinet_ekorren.wsgi:application
