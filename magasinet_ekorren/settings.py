@@ -113,11 +113,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'dtes0r4kj',
-#     'API_KEY': '885712242174876',
-#     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
-# }
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
@@ -129,8 +124,4 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = 'f54c27d154a21b'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = '2525'
+

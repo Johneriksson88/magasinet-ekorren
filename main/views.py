@@ -9,7 +9,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_protect
@@ -19,6 +18,8 @@ import csv
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import EmailMessage
 from django.conf import settings
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 
 def index(request):
@@ -29,24 +30,6 @@ def index(request):
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
-
-            html = render_to_string('contact_form.html', {
-                'name': name,
-                'email': email,
-                'message': message
-            })
-
-            send_mail(
-                'You got a message from Magasinet Ekorren!',
-                'message',
-
-                # Below emails will be changed in the future as soon as the
-                # customer has set up an email host
-
-                'john.e.eriksson@gmail.com',
-                ['john.e.eriksson@gmail.com'],
-                html_message=html
-            )
             messages.success(
                 request,
                 'Thank you for contacting us! We will get back to you shortly.')
@@ -153,12 +136,6 @@ def order_form(request):
             messages.success(
                 request,
                 "Order successfully submitted! You will get an email confirmation shortly.")
-            send_order_confirmation(
-                request,
-                name,
-                email,
-                order_id
-            )
             return redirect("user_panel")
 
     context = {'form': form, 'units': units}
@@ -194,10 +171,6 @@ def delete_order(request, pk):
     if request.method == 'POST':
         order.delete()
         messages.success(request, f"Order #{order_id} successfully deleted.")
-        send_order_deletion_notification(
-            request,
-            customer,
-            order_id)
         return redirect('user_panel')
     context = {'order': order}
     return render(request, 'delete_order.html', context)
@@ -246,44 +219,3 @@ def export_csv(request):
 
 def not_registered(request):
     return render(request, 'not_registered.html')
-
-
-def send_order_confirmation(request, name, email, order):
-    user_email = request.user.customer.email
-    template = render_to_string(
-        'order_confirmation_email.html',
-        {
-            'name': name,
-            'order': order
-        })
-
-    email = EmailMessage(
-        'Order confirmation from Magasinet Ekorren',
-        template,
-        'john.e.eriksson@gmail.com',
-        ['john.e.eriksson@gmail.com'],
-    )
-
-    email.fail_silently = False
-    email.send()
-
-
-def send_order_deletion_notification(request, name, order):
-    user_email = request.user.customer.email
-    template = render_to_string(
-        'order_deletion_email.html',
-        {
-            'name': name,
-            'order': order
-        })
-
-    email = EmailMessage(
-        'Order cancelled from Magasinet Ekorren',
-        template,
-        'john.e.eriksson@gmail.com',
-        ['john.e.eriksson@gmail.com'],
-
-    )
-
-    email.fail_silently = False
-    email.send()
