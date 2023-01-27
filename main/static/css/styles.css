@@ -1,0 +1,401 @@
+/* FONTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Lato:wght@300&family=Shrikhand&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+/* Fix whitespace on right side */
+
+html  {
+
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+    overflow-x: hidden;
+}
+
+.py-10 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+
+/* TEXT */
+
+a {
+    text-decoration: none;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Shrikhand", sans-serif;
+    font-weight: 200;
+}
+
+
+.text-green {
+    color: rgb(3, 163, 3);
+}
+
+.text-red {
+    color: red;
+}
+
+.text-acorn-green {
+    color: #ffb74d;
+}
+
+.user-panel {
+    color: #6f25e5;
+}
+
+.text-edit {
+    color: #053070;
+}
+
+/* CUSTOM BG-COLORS */
+
+.bg-grey {
+    background-color: rgb(242, 236, 253);
+}
+
+.bg-info {
+    background-color: #74cfbf !important;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    padding: 35px;
+    padding-left: 180px;
+    padding-right: 180px;
+    background-color: #505677;
+}
+
+@media only screen and (max-width: 990px) {
+    .navbar {
+        padding: 10px;
+        padding-left: 90px;
+        padding-right: 90px;
+
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+    .navbar {
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+}
+
+.navbar-brand {
+    font-size: 32px;
+    font-family: "Cinzel Decorative", sans-serif;
+}
+
+.nav-link:hover {
+    color: rgb(123, 235, 179) !important;
+}
+
+
+#header-banner {
+    background-color: #f7ba5b;
+    color: #3B3B3B;
+}
+
+.low-price {
+    color: #0000BD;
+    font-weight: bold;
+}
+
+.loginout-btn {
+    padding: 3px;
+    margin-left: 5px;
+    border: 1px solid black;
+}
+
+#user-nav {
+    list-style: none;
+}
+
+#user-panel-icon:hover {
+    color: #c9913d
+}
+
+/* HERO IMAGE AND JUMBOTRON */
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/static/images/boxes_small.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#hero-lead {
+    width: 40%;
+}
+
+/* INFORMATION SECTION */
+
+.list-group-horizontal>li {
+    margin: 6px;
+    padding: 6px;
+}
+
+.list-group-horizontal>li::marker {
+    font-weight: bold;
+}
+
+.list-group-horizontal > li > a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 986px) {
+    .list-group-horizontal {
+        flex-direction: column;
+    }
+}
+
+.instructions {
+    border: 3px solid #505677;
+    border-radius: 5px;
+}
+
+/* PRODUCT CARDS */
+
+.product-card {
+    width: 19rem;
+}
+
+#prouct-card-row {
+    justify-content: center;
+}
+
+.card-img-top {
+    border-radius: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.card-header {
+    width: 100%;
+    background-color: #f7ba5b;
+    font-weight: bold;
+}
+
+.list-group {
+    list-style-position: inside;
+}
+
+@media screen and (max-width: 767px) {
+    .card {
+        margin-top: 10px;
+    }
+}
+
+
+/* WHY US SECTION */
+
+#why-us-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.circle-container {
+    height: 250px;
+    width: 250px;
+    background-color: #fafafa;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 4px solid black;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-text {
+    padding-top: 20px;
+}
+
+.circle-text h3 {
+    text-decoration: underline;
+}
+
+.circle-image {
+    padding-top: 50px;
+}
+
+.why-us-container h2 {
+    margin-bottom: 50px;
+}
+
+/* ABOUT US SECTION */
+
+#about-us-section {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.embedded-map {
+    width: 100%;
+    height: 300px; 
+    border: 0;
+}
+/* FOOTER */
+
+footer {
+    background-color: #505677;
+}
+
+footer > ul > li > a.nav-link {
+    display: block;
+    color: white;
+}
+
+footer > ul > li > a.nav-link:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+
+/* USER REGISTRATION PAGE */
+
+.user-card {
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #74cfbf;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+}
+
+.form_container {
+    margin-top: 20px;
+}
+
+.form-control {
+    margin-bottom: 5px;
+    max-width: 300px;
+    min-width: 250px;
+}
+
+#form-title {
+    color: #fff;
+}
+
+.login-btn {
+    width: 100%;
+    background: #33ccff;
+    color: rgb(20, 19, 19);
+}
+
+.login-btn:hover {
+    border: 2px solid black;
+    background-color: #33ccff;
+}
+
+.links > a {
+    text-decoration: underline;
+}
+
+.login-btn:focus {
+    box-shadow: none;
+    outline: 0px;
+}
+
+.login-container {
+    padding: 0 2rem;
+}
+
+.input-group-text {
+    background: #f7ba5b;
+    color: white;
+    border: 0;
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.input_user,
+.input_pass:focus {
+    box-shadow: none;
+    outline: 0px;
+}
+
+
+/* FORMS */
+
+.form-card {
+    margin-top: 70px;
+    margin-bottom: 70px;
+
+}
+
+.form-container {
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+label.error {
+    background-color: red;
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+    margin-top: 3px;
+}
+
+input.error {
+    border: 2px solid red;
+}
+
+.help-block {
+    background-color: red;
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+    margin-top: 3px;
+}
+
+
+label.error.fail-alert {
+    border: 2px solid red;
+    border-radius: 4px;
+    line-height: 1;
+    padding: 2px 0 6px 6px;
+    background: #ffe6eb;
+}
+
+input.valid.success-alert {
+    border: 2px solid #4CAF50;
+    color: green;
+}
