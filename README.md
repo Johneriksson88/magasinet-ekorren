@@ -395,6 +395,7 @@ At the moment all emails go to an SMTP test server on the free service [Mailtrap
 
 ## Features Left to Implement
 
+- Sending real emails from contact form and order/order cancelling confirmation
 - Ability to rent a storage unit without having to create an account
 - Online payment method
 - Order history on user panel
@@ -640,13 +641,6 @@ The manual testing was divided up into the websites different functions:
 | Submitting the form entering an invalid email address gives me a feedback message | Enter an email without an "@" symbol | PASS |
 | Submitting the form entering an invalid Swedish zipcode gives me a feedback message | Enter a zipcode with only 4 digits | PASS |
 
-7. **Send email**
-
-| Expected outcome | Test | Result |
-| ----------- | ----------- | ----------- |
-| Sending an email from the contact form successfully sends an email to the Mailtrap SMTP test email | Fill the concact form and hit "Send" | PASS |
-| When making a new order an email notification is sent to the Mailtrap SMTP test email | Make a new order in the User panel | PASS |
-| When deleting an order an email notification is sent to the Mailtrap SMTP test email | Delete an order in the User panel | PASS |
 
 #
 
@@ -718,15 +712,17 @@ In the future I am likely to change the database host to a paid service. This is
 
 ### Email SMTP server bugs
 
+The original plan was for the app to send confirmation emails to the customer and admin when an order was made, an order was cancelled and in the contact form on the landing page. I initially setup the emails to be sent to the MailTrap SMTP server for testing. All emails would go to this test inbox.
+
 When sending an email, either via the contact form on the landing page or making/deleting and order, I sometimes got the following error:
 ```
 Error: SMTP Sender Refused
 (530, b'5.7.0 Authentication Required)
 ```
 
-After googling the error this seemed to be caused on the server side of the [Mailtrap](https://mailtrap.io/) SMTP server i use. I have not found the exact cause of this bug since i can't reproduce it. I found that going into Mailtrap and resetting the credentials for the API made the error go away. I will put a pin in this error since I feel that I have no control over it and that it may come back. Changing to another SMTP service could solve the problem. 
+After googling the error this seemed to be caused on the server side of the [Mailtrap](https://mailtrap.io/) SMTP server i use. I have not found the exact cause of this bug since i can't reproduce it. I found that going into Mailtrap and resetting the credentials for the API made the error temporarily go away. However it reappeared after some time.
 
-In the future, I will change the email settings from the test server to a paid SMTP server plan that can send emails to other recipients than the test server. This is a decision that is on the site owners table, and I am waiting to implement it as soon as i get a go ahead from them.
+Countless hours reading about this error it all seemed to have something to do with the SMTP server side and the credentials. Since i couldn't fix this due to time constraints I decided to scrap the email sending for now, and just have the Django messages for confirmation. 
 
 ## Credits
 
