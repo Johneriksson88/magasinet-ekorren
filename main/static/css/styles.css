@@ -144,7 +144,7 @@ h6 {
 /* HERO IMAGE AND JUMBOTRON */
 
 .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/static/images/boxes_small.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(https://res.cloudinary.com/dtes0r4kj/image/upload/v1674816762/static/images/boxes_small.cccb4cd2234a.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
