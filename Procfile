@@ -1,1 +1,1 @@
-web: gunicorn ekorren.wsgi
+web: gunicorn magasinet-ekorren.wsgi
