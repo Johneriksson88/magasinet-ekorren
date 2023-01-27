@@ -18,8 +18,6 @@ import csv
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import EmailMessage
 from django.conf import settings
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
 
 
 def index(request):
