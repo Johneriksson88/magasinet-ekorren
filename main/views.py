@@ -43,8 +43,8 @@ def index(request):
                 # Below emails will be changed in the future as soon as the
                 # customer has set up an email host
 
-                None,
-                ['to@magasinetekorren.se'],
+                'john.e.eriksson@gmail.com',
+                ['john.e.eriksson@gmail.com'],
                 html_message=html
             )
             messages.success(
@@ -260,8 +260,8 @@ def send_order_confirmation(request, name, email, order):
     email = EmailMessage(
         'Order confirmation from Magasinet Ekorren',
         template,
-        None,
-        ['to@magasinetekorren.se'],
+        'john.e.eriksson@gmail.com',
+        ['john.e.eriksson@gmail.com'],
     )
 
     email.fail_silently = False
@@ -280,8 +280,8 @@ def send_order_deletion_notification(request, name, order):
     email = EmailMessage(
         'Order cancelled from Magasinet Ekorren',
         template,
-        None,
-        ['to@magasinetekorren.se'],
+        'john.e.eriksson@gmail.com',
+        ['john.e.eriksson@gmail.com'],
 
     )
 
